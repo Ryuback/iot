@@ -1,0 +1,31 @@
+
+ul {
+  padding: 0;
+  margin: 02px 0 0 8px;
+}
+
+li {
+  list-style: none;
+}
+
+.error {
+  li {
+    color: var(--app-danger-color);
+  }
+}
+
+.warn {
+  li {
+    color: var(--app-warning-color);
+  }
+}
+
+.info {
+  li {
+    color: var(--app-success-color);
+  }
+}
+
+li {
+  font-size: 12px;
+}

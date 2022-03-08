@@ -1,0 +1,7 @@
+<div *ngIf="messageList && messageList.length > 0"
+     [ngClass]="class">
+  <ul *ngFor="let msg of messageList"
+      [ngClass]="msg.class">
+    <li>{{msg.message}}</li>
+  </ul>
+</div>

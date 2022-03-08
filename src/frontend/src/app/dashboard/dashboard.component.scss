@@ -1,0 +1,25 @@
+.parent {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-rows: 1fr;
+  //grid-column-gap: 0px; default 0
+  //grid-row-gap: 0px; default 0
+}
+
+.table {
+  grid-area: 1 / 1 / 2 / 2;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.graph {
+  grid-area: 1 / 2 / 2 / 3;
+  height: 100vh;
+  padding: 1rem;
+}
+
+:host ::ng-deep {
+  .p-card .p-card-content {
+    padding: 0;
+  }
+}
