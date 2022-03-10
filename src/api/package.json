@@ -1,14 +1,23 @@
 {
-  "name": "iot",
+  "name": "api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "reset": "firmata-party uno --debug",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "johnny-five": "^2.1.0"
+    "-": "^0.0.1",
+    "firebase": "^9.6.8",
+    "firmata": "^2.3.0",
+    "firmata-party": "^2.0.1",
+    "g": "^2.0.1",
+    "johnny-five": "^2.1.0",
+    "nopt": "^5.0.0",
+    "package.json": "^2.0.1",
+    "serialport": "^10.4.0"
   }
 }

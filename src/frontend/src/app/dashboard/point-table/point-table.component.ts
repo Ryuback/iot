@@ -2,6 +2,10 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DialogService} from "primeng/dynamicdialog";
 import {UserDialogComponent} from "./user-dialog/user-dialog.component";
 
+class Potentiometer {
+  value: number;
+}
+
 @Component({
   selector: 'app-point-table',
   templateUrl: './point-table.component.html',
@@ -17,6 +21,7 @@ export class PointTableComponent implements OnInit {
 
   constructor(private dialogService: DialogService) {
   }
+
 
   ngOnInit(): void {
   }

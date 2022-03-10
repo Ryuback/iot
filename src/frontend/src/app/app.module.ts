@@ -9,7 +9,9 @@ import {PointTableComponent} from './dashboard/point-table/point-table.component
 import {CardModule} from "primeng/card";
 import {UserDialogComponent} from './dashboard/point-table/user-dialog/user-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { ValidationMsgComponent } from './shared/validation-msg/validation-msg.component';
+import {ValidationMsgComponent} from './shared/validation-msg/validation-msg.component';
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 
 @NgModule({
   declarations: [
@@ -20,6 +22,16 @@ import { ValidationMsgComponent } from './shared/validation-msg/validation-msg.c
     ValidationMsgComponent
   ],
   imports: [
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyAkXP_tDYuOJ2-k5etLKnEq_zdYTxBxlWs",
+      authDomain: "iot---js.firebaseapp.com",
+      databaseURL: "https://iot---js-default-rtdb.firebaseio.com",
+      projectId: "iot---js",
+      storageBucket: "iot---js.appspot.com",
+      messagingSenderId: "825513689168",
+      appId: "1:825513689168:web:e9751cccf05343ef7f5155"
+    }),
+    AngularFireDatabaseModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

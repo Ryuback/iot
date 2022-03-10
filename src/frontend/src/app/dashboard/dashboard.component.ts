@@ -1,28 +1,41 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  @ViewChild('chart')
+  private chart;
+
   data: any = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: [''],
     datasets: [
       {
         label: 'First Dataset',
-        data: [65, 59, 80, 81, 56, 55, 40]
-      },
-      {
-        label: 'Second Dataset',
-        data: [28, 48, 40, 19, 86, 27, 90]
+        data: [1]
       }
     ]
-  }
-  ;
+  };
 
-  constructor() {
+  constructor(private db: AngularFireDatabase,
+              private cdr: ChangeDetectorRef) {
+    this.db.list('potentiometer')
+      .snapshotChanges()
+      .pipe(
+        tap(update => {
+          const v = update[0].payload.val()
+          console.log(update[0].payload.val());
+          this.data.labels.push('');
+          this.data.datasets[0].data.push(v);
+          console.log(this.data)
+          this.chart.refresh();
+        })
+      ).subscribe()
   }
 
   ngOnInit(): void {
