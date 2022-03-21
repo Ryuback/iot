@@ -1,0 +1,34 @@
+.toast {
+  display: inline;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Noto Sans";
+  color: white;
+}
+
+.READING {
+  background-color: #22C55E;
+}
+
+.WAITING {
+  background-color: #EF4444;
+}
+
+.status-toast {
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: "Noto Sans";
+  color: white;
+  font-size: 0.8rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+.ENTRADA {
+  background-color: #227ec5;
+}
+
+.SAIDA {
+  background-color: #EF4444;
+}

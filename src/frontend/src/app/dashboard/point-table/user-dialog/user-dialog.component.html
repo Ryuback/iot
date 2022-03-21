@@ -1,5 +1,6 @@
 <form [formGroup]="form"
       (submit)="submit()"
+      *ngIf="!loadingRFID"
       class="mt-3">
   <div class="p-inputgroup">
     <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
@@ -11,6 +12,16 @@
     <input type="text" pInputText placeholder="Apelido" formControlName="nickname">
   </div>
 
+  <div class="p-inputgroup">
+    <input type="text" pInputText value="Professor" formControlName="type" disabled>
+  </div>
 
-  <p-button type="submit" label="Submit"></p-button>
+  <div class="flex p-fluid justify-content-end mt-2">
+    <p-button type="submit" label="Submit"></p-button>
+  </div>
 </form>
+
+<div *ngIf="loadingRFID"
+     class="flex p-fluid justify-content-center mt-2">
+  <p-progressSpinner></p-progressSpinner>
+</div>

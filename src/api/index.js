@@ -1,6 +1,7 @@
-const {Board, Sensor, Led} = require("johnny-five");
+const {SerialPort} = require('serialport');
 const {initializeApp} = require('firebase/app');
-const {getDatabase, set, ref} = require("firebase/database");
+const {getDatabase, set, push, ref} = require("firebase/database");
+const {nanoid} = require("nanoid");
 
 // TODO: Replace with your app's Firebase project configuration
 const firebaseConfig = {
@@ -14,31 +15,29 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const board = new Board();
 
-board.on("ready", (r) => {
-    const potentiometer = new Sensor("A3");
-    const led13 = new Led("13");
+const port = new SerialPort({
+    path: '/dev/ttyUSB0',
+    baudRate: 9600,
 
-    led13.blink(1000);
+}, (err => err ? console.log(err) : null))
 
-    potentiometer.on("change", () => {
-        const {value, raw} = potentiometer;
-        writeData(value);
-        console.log("Sensor: ");
-        console.log("  value  : ", value);
-        console.log("  raw    : ", raw);
-        console.log("-----------------");
-    });
-});
-
-board.on("error", (e) => {
-    console.log(e)
+// The open event is always emitted
+port.on('open', function () {
+    console.log("**** DISPOSITIVO CONECTADO ***")
 })
 
-function writeData(value) {
+port.on('data', async function (data) {
+    console.log(data.toString());
+    await writeData(data.toString().replace(/\s/g, ''))
+})
+
+async function writeData(value) {
     const database = getDatabase(app);
-    set(ref(database, 'potentiometer/'), {
-        data: value,
+    await set(ref(database, 'RFID_entries'), {
+        data: value
+    });
+    await set(ref(database, 'RFID_entries'), {
+        data: '',
     });
 }

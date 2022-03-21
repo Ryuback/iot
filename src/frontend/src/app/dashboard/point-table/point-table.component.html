@@ -1,3 +1,4 @@
+<div [class]="'toast ' + readingStatus">{{readingStatus === 'READING' ? 'EM FUNCIONAMENTO' : 'PAUSADO'}}</div>
 <div class="flex justify-content-end">
   <button pButton
           pRipple
@@ -6,21 +7,21 @@
           class="p-button-rounded p-button-text mb-3"
           (click)="openUserDialog()"></button>
 </div>
-<p-table [value]="products" responsiveLayout="scroll">
+<p-table [value]="points" responsiveLayout="scroll">
   <ng-template pTemplate="header">
     <tr>
-      <th>Code</th>
+      <th>Status</th>
       <th>Name</th>
       <th>Category</th>
-      <th>Quantity</th>
+      <th>Date</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-product>
+  <ng-template pTemplate="body" let-person>
     <tr>
-      <td>{{product.code}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.category}}</td>
-      <td>{{product.quantity}}</td>
+      <td><span [class]="'status-toast ' + person.entryType"> {{person.entryType}} </span></td>
+      <td>{{person.name}}</td>
+      <td>{{person.type}}</td>
+      <td>{{person.time | date:'medium'}}</td>
     </tr>
   </ng-template>
 </p-table>

@@ -12,6 +12,11 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {ValidationMsgComponent} from './shared/validation-msg/validation-msg.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
+import {MessagesModule} from "primeng/messages";
+import {MessageModule} from "primeng/message";
+import {ToastModule} from "primeng/toast";
+import {MessageService} from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -37,9 +42,13 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
     AppRoutingModule,
     ReactiveFormsModule,
     SharedModule,
-    CardModule
+    CardModule,
+    ProgressSpinnerModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

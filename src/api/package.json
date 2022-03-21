@@ -4,20 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "reset": "firmata-party uno --debug",
-    "start": "node index.js"
+    "start:api": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "-": "^0.0.1",
     "firebase": "^9.6.8",
-    "firmata": "^2.3.0",
-    "firmata-party": "^2.0.1",
-    "g": "^2.0.1",
-    "johnny-five": "^2.1.0",
-    "nopt": "^5.0.0",
-    "package.json": "^2.0.1",
+    "nanoid": "^3.3.1",
     "serialport": "^10.4.0"
   }
 }
