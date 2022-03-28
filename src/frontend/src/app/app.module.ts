@@ -18,6 +18,7 @@ import {MessageModule} from "primeng/message";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {PortaComponent} from './porta/porta.component';
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -29,23 +30,7 @@ import {PortaComponent} from './porta/porta.component';
     PortaComponent
   ],
   imports: [
-    AngularFireModule.initializeApp({
-      apiKey: "AIzaSyDqbr3hbDP3yJfNoij-VtgyswtQpf9IcPA",
-      authDomain: "tranca-40953.firebaseapp.com",
-      projectId: "tranca-40953",
-      storageBucket: "tranca-40953.appspot.com",
-      messagingSenderId: "656788157614",
-      appId: "1:656788157614:web:fd7633599b3bcde027a93f",
-      measurementId: "G-3KGNCY9CCB"
-      //----------------------------------
-      // apiKey: "AIzaSyAkXP_tDYuOJ2-k5etLKnEq_zdYTxBxlWs",
-      // authDomain: "iot---js.firebaseapp.com",
-      // databaseURL: "https://iot---js-default-rtdb.firebaseio.com",
-      // projectId: "iot---js",
-      // storageBucket: "iot---js.appspot.com",
-      // messagingSenderId: "825513689168",
-      // appId: "1:825513689168:web:e9751cccf05343ef7f5155"
-    }),
+    AngularFireModule.initializeApp(environment.key),
     AngularFireDatabaseModule,
     BrowserModule,
     BrowserAnimationsModule,

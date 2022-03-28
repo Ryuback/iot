@@ -2,19 +2,9 @@ const {SerialPort} = require('serialport');
 const {initializeApp} = require('firebase/app');
 const {getDatabase, set, push, ref} = require("firebase/database");
 const {nanoid} = require("nanoid");
+const {environment} = require("../environments");
 
-// TODO: Replace with your app's Firebase project configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyAkXP_tDYuOJ2-k5etLKnEq_zdYTxBxlWs",
-    authDomain: "iot---js.firebaseapp.com",
-    databaseURL: "https://iot---js-default-rtdb.firebaseio.com",
-    projectId: "iot---js",
-    storageBucket: "iot---js.appspot.com",
-    messagingSenderId: "825513689168",
-    appId: "1:825513689168:web:e9751cccf05343ef7f5155"
-};
-
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(environment.key);
 
 const port = new SerialPort({
     path: '/dev/ttyUSB0',

@@ -1,19 +1,8 @@
 const {Board, Sensor, Led, Sensors} = require("johnny-five");
 const {initializeApp} = require('firebase/app');
 const {getDatabase, set, ref} = require("firebase/database");
-
-// TODO: Replace with your app's Firebase project configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyAkXP_tDYuOJ2-k5etLKnEq_zdYTxBxlWs",
-    authDomain: "iot---js.firebaseapp.com",
-    databaseURL: "https://iot---js-default-rtdb.firebaseio.com",
-    projectId: "iot---js",
-    storageBucket: "iot---js.appspot.com",
-    messagingSenderId: "825513689168",
-    appId: "1:825513689168:web:e9751cccf05343ef7f5155"
-};
-
-const app = initializeApp(firebaseConfig);
+const {environment} = require("../environments");
+const app = initializeApp(environment.key);
 const board = new Board();
 
 board.on("ready", (r) => {
