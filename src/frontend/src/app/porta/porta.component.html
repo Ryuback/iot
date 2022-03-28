@@ -1,0 +1,11 @@
+<div [class]="'toast ' + !status">{{!status ? 'ABERTO' : 'FECHADO'}}</div>
+<div>
+  <button pButton
+          pRipple
+          (click)="changeStatus()"
+          type="button"
+          [label]="!status ? 'FECHAR' : 'ABRIR'"
+          class="p-button-raised"
+          [ngClass]="status ? 'p-button-success' : 'p-button-danger'"></button>
+</div>
+

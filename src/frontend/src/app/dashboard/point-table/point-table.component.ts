@@ -45,11 +45,11 @@ export class PointTableComponent implements OnInit {
         if (rfid) {
           console.log(rfid);
           const user = (await this.userTable.child(rfid).get()).val() as User;
+          console.log(user);
           if (!user) {
             return this.messageService.addWarn("Esse cartão não está vinculado a nenhum usuário.");
           }
           const pTableAll = ((await this.pointTable.get()).val()) ? Object.values((await this.pointTable.get()).val()) as any[] : [];
-          console.log(pTableAll);
 
           if (pTableAll == undefined || pTableAll.length === 0) {
             console.log('#INSERIR')
@@ -61,14 +61,13 @@ export class PointTableComponent implements OnInit {
               time: new Date().toString()
             })
           } else {
-            console.log('TABLE: ', pTableAll)
+            // console.log('TABLE: ', pTableAll)
             const userFilter = pTableAll.filter(v => v.rfid === rfid);
-            console.log('FILTER: ', userFilter)
-            console.log(userFilter.length - 1)
+            // console.log('FILTER: ', userFilter)
+            // console.log(userFilter.length - 1)
             const lastData = userFilter[userFilter.length - 1];
-            console.log(lastData)
+            // console.log(lastData)
             if (lastData) {
-              console.log(1);
               this.pointTable.push({
                 rfid: rfid,
                 name: user.fullName,
@@ -77,7 +76,6 @@ export class PointTableComponent implements OnInit {
                 time: new Date().toString()
               });
             } else {
-              console.log(2)
               this.pointTable.push({
                 rfid: rfid,
                 name: user.fullName,
